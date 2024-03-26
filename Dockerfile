@@ -10,4 +10,3 @@ RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /cloudflared /bin/cloudflared
 CMD ["/bin/cloudflared", "--logfile", "/var/log/cloudflared", "--pidfile", "/var/run/cloudflared.pid", "--no-autoupdate", "proxy-dns", "--address", "0.0.0.0", "--port", "53"]
-

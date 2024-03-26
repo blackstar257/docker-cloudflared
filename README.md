@@ -4,7 +4,7 @@ Dockerized `cloudflared` binary for various environments.
 
 ## AMD64
 
-```
+```sh
 docker run --restart always -d -p 192.168.129.105:53:53/udp ghcr.io/blackstar257/docker-cloudflared/image:latest
 ```
 
@@ -12,6 +12,6 @@ docker run --restart always -d -p 192.168.129.105:53:53/udp ghcr.io/blackstar257
 
 Uses Alpine v3.12 due to changes in 3.13. https://wiki.alpinelinux.org/wiki/Release_Notes_for_Alpine_3.13.0#time64_requirements
 
-```
+```sh
 docker run --restart always -d -p 192.168.129.105:53:53/udp ghcr.io/blackstar257/docker-cloudflared/image:arm32
 ```
