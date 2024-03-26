@@ -1,13 +1,12 @@
 # syntax=docker/dockerfile:1
-FROM arm32v7/alpine:3.12 as builder
+FROM arm32v7/alpine:latest as builder
 RUN apk --no-cache add ca-certificates curl
 WORKDIR /root/
 RUN	curl -L -o /cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm
 RUN chmod +x /cloudflared
 
-FROM arm32v7/alpine:3.12
+FROM arm32v7/alpine:latest
 RUN apk --no-cache add ca-certificates
 WORKDIR /root/
 COPY --from=builder /cloudflared /bin/cloudflared
 CMD ["/bin/cloudflared", "--logfile", "/var/log/cloudflared", "--pidfile", "/var/run/cloudflared.pid", "--no-autoupdate", "proxy-dns", "--address", "0.0.0.0", "--port", "53"]
-
